@@ -24,15 +24,17 @@
 <Router>
 	<AppHeader />
 
-	<Route path="/">
-		<Main userRole="{user.role}" />
-	</Route>
+	<div class="container">
+		<Route path="/">
+			<Main userRole="{user.role}" />
+		</Route>
 
-	<!-- auth -->
-	<Route path="login">
-		<Login on:userLoggedIn on:userLoggedIn="{handleUser}" />
-	</Route>
-	<Route path="signup">
-		<SignUp />
-	</Route>
+		<!-- auth -->
+		<Route path="login">
+			<Login on:userLoggedIn on:userLoggedIn="{handleUser}" />
+		</Route>
+		<Route path="signup">
+			<SignUp />
+		</Route>
+	</div>
 </Router>

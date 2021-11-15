@@ -30,7 +30,7 @@
 	}
 </script>
 
-<div class="container">
+<div>
 	<form method="post" class="login-form">
 		<h1>Login</h1>
 
