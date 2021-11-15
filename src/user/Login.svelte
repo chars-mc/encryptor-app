@@ -1,9 +1,11 @@
 <script lang="ts">
 	import CardInfo from "../shared/components/CardInfo.svelte";
 	import Spinner from "../shared/components/Spinner.svelte";
-	import { UserLogin } from "./domain/user";
+	import { UserAuthenticated, UserLogin } from "./domain/user";
 	import { UserRepository } from "./domain/userRepository";
+	import { createEventDispatcher } from "svelte";
 
+	const dispath = createEventDispatcher();
 	let isLoading = false;
 	let error = "";
 	let promise;
@@ -21,6 +23,9 @@
 		} finally {
 			isLoading = false;
 		}
+	}
+	function emitLogin(user: UserAuthenticated) {
+		dispath("userLoggedIn", { user });
 	}
 </script>
 
@@ -56,7 +61,7 @@
 		<Spinner />
 	{:then user}
 		{#if user}
-			{user.role}
+			{emitLogin(user)}
 		{/if}
 	{:catch error}
 		<CardInfo type="DANGER" message="{error.message}" />

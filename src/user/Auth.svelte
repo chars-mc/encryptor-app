@@ -11,7 +11,7 @@
 	</nav>
 
 	<Route path="login">
-		<Login />
+		<Login on:userLoggedIn />
 	</Route>
 	<Route path="signup">
 		<SignUp />
