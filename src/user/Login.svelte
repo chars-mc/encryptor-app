@@ -1,17 +1,21 @@
 <script lang="ts">
 	import CardInfo from "../shared/components/CardInfo.svelte";
+	import Spinner from "../shared/components/Spinner.svelte";
 	import { UserLogin } from "./domain/user";
+	import { UserRepository } from "./domain/userRepository";
 
 	let isLoading = false;
 	let error = "";
+	let promise;
 	const userLogin = new UserLogin("", "");
+	const userRepository = UserRepository;
 
 	function handleClick() {
 		isLoading = true;
+		error = "";
 		try {
-			if (userLogin.verify()) {
-				console.log("correct");
-			}
+			userLogin.verify();
+			promise = userRepository.login(userLogin);
 		} catch (err) {
 			error = err.message;
 		} finally {
@@ -47,4 +51,14 @@
 	{#if error}
 		<CardInfo type="DANGER" message="{error}" />
 	{/if}
+
+	{#await promise}
+		<Spinner />
+	{:then user}
+		{#if user}
+			{user.role}
+		{/if}
+	{:catch error}
+		<CardInfo type="DANGER" message="{error.message}" />
+	{/await}
 </div>

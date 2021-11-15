@@ -13,3 +13,10 @@ export class UserLogin {
 		return true;
 	}
 }
+
+export type UserAuthenticated = {
+	id: number;
+	username: string;
+	role: string;
+	token: string;
+};
