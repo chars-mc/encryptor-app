@@ -1,3 +1,5 @@
 <template>
-	<h1>SignUp</h1>
+	<form>
+		<h1>SignUp</h1>
+	</form>
 </template>
