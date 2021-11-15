@@ -4,6 +4,7 @@
 	import { UserAuthenticated, UserLogin } from "./domain/user";
 	import { UserRepository } from "./domain/userRepository";
 	import { createEventDispatcher } from "svelte";
+	import { Link } from "svelte-navigator";
 
 	const dispath = createEventDispatcher();
 	let isLoading = false;
@@ -52,7 +53,12 @@
 		>
 			Login
 		</button>
+
+		<p>
+			Your don't have an account? <Link to="/signup">Signup</Link>
+		</p>
 	</form>
+
 	{#if error}
 		<CardInfo type="DANGER" message="{error}" />
 	{/if}
