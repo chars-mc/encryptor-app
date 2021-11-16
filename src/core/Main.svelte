@@ -75,7 +75,11 @@
 		<Spinner />
 	{:then response}
 		{#if response}
-			<p class="result">{response.content}</p>
+			<div class="result">
+				<h4>Result:</h4>
+
+				<p>{response.content}</p>
+			</div>
 		{/if}
 	{:catch error}
 		<CardInfo type="DANGER" message="{error.message}" />
@@ -100,13 +104,10 @@
 	}
 
 	.result {
-		margin: var(--padding);
 		padding: var(--padding);
 		border-radius: var(--border-radius);
-		height: 10rem;
 		background-color: rgba(0, 0, 0, 0.05);
-		display: flex;
-		align-items: center;
-		justify-content: center;
+		text-align: center;
+		word-wrap: break-word;
 	}
 </style>
