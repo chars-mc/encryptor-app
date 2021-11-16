@@ -1,12 +1,30 @@
 <script lang="ts">
-	import { algorithms, DataRequest, dataType } from "./data";
+	import CardInfo from "../shared/components/CardInfo.svelte";
+	import Spinner from "../shared/components/Spinner.svelte";
+	import type { UserAuthenticated } from "../user/domain/user";
 
-	export let userRole: string;
+	import { algorithms, DataRequest, dataType } from "./data";
+	import { DataRepository } from "./dataRepository";
+
+	let error = "";
+	let promise;
+
+	export let user: UserAuthenticated;
 	let data: DataRequest = {
 		content: "",
 		idDataType: 1,
 		idAlgorithm: 1,
 	};
+
+	function handleClick() {
+		error = "";
+		try {
+			promise = DataRepository.encrypt(data, user.token);
+		} catch (err) {
+			error = err.message;
+		} finally {
+		}
+	}
 </script>
 
 <template>
@@ -40,12 +58,28 @@
 			<input type="file" placeholder="Select a file" />
 		{/if}
 
-		<button class="btn btn-success" type="submit">
-			{userRole === "Encryptor" ? "Encrypt" : "Decrypt"}
+		<button
+			class="btn btn-success"
+			type="submit"
+			on:click|preventDefault="{handleClick}"
+		>
+			{user.role === "Encryptor" ? "Encrypt" : "Decrypt"}
 		</button>
 	</form>
 
-	<p class="result">Result</p>
+	{#if error}
+		<CardInfo type="DANGER" message="{error}" />
+	{/if}
+
+	{#await promise}
+		<Spinner />
+	{:then response}
+		{#if response}
+			<p class="result">{response.content}</p>
+		{/if}
+	{:catch error}
+		<CardInfo type="DANGER" message="{error.message}" />
+	{/await}
 </template>
 
 <style scoped>

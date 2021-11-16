@@ -4,5 +4,10 @@ export type DataRequest = {
 	idAlgorithm: number;
 };
 
+export type DataResponse = {
+	id: number;
+	content: string;
+};
+
 export const dataType = ["Text", "File"];
 export const algorithms = ["AES", "Blowfish"];
