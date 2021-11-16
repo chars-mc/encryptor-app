@@ -1,32 +1,41 @@
 <script lang="ts">
+	import { algorithms, DataRequest, dataType } from "./data";
+
 	export let userRole: string;
-	let dataType = "text";
+	let data: DataRequest = {
+		content: "",
+		idDataType: 1,
+		idAlgorithm: 1,
+	};
 </script>
 
 <template>
 	<form>
 		<div>
-			<input
-				type="radio"
-				name="data_type"
-				value="text"
-				bind:group="{dataType}"
-				id="text"
-			/>
-			<label for="text">Text</label>
+			{#each dataType as dataType, i}
+				<input
+					type="radio"
+					name="data_type"
+					value="{i + 1}"
+					bind:group="{data.idDataType}"
+					id="{dataType}"
+				/>
+				<label for="{dataType}">{dataType}</label>
+			{/each}
 
-			<input
-				type="radio"
-				name="data_type"
-				value="file"
-				bind:group="{dataType}"
-				id="file"
-			/>
-			<label for="file">File</label>
+			<select id="algoithm" bind:value="{data.idAlgorithm}">
+				{#each algorithms as algorithm, i}
+					<option value="{i + 1}">{algorithm}</option>
+				{/each}
+			</select>
 		</div>
 
-		{#if dataType === "text"}
-			<input type="text" placeholder="Enter text here" />
+		{#if data.idDataType == 1}
+			<input
+				type="text"
+				bind:value="{data.content}"
+				placeholder="Enter text here"
+			/>
 		{:else}
 			<input type="file" placeholder="Select a file" />
 		{/if}
