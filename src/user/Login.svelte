@@ -31,7 +31,7 @@
 </script>
 
 <div>
-	<form method="post" class="login-form">
+	<form method="post" class="form-auth">
 		<h1>Login</h1>
 
 		<input

@@ -84,17 +84,16 @@ input:focus {
 }
 
 form {
-	padding: calc(var(--padding) / 2);
-}
-
-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	padding: calc(var(--padding) / 2);
 }
 
-.login-form input,
-.login-form button {
+.form-auth input[type="text"],
+.form-auth input[type="password"],
+.form-auth input[type="select"],
+.form-auth button {
 	width: 100%;
 	max-width: 350px;
 }
