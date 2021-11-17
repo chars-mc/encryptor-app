@@ -26,7 +26,7 @@
 
 	<div class="container">
 		<Route path="/">
-			<Main userRole="{user.role}" />
+			<Main user="{user}" />
 		</Route>
 
 		<!-- auth -->
