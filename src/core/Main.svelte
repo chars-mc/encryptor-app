@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { navigate } from "svelte-navigator";
+
 	import CardInfo from "../shared/components/CardInfo.svelte";
 	import Spinner from "../shared/components/Spinner.svelte";
 	import type { UserAuthenticated } from "../user/domain/user";
@@ -24,6 +26,10 @@
 			error = err.message;
 		} finally {
 		}
+	}
+	function logout() {
+		localStorage.removeItem("encryptor_app");
+		navigate("/login");
 	}
 </script>
 
@@ -84,6 +90,10 @@
 	{:catch error}
 		<CardInfo type="DANGER" message="{error.message}" />
 	{/await}
+
+	<button class="btn btn-circle" on:click="{logout}">
+		<i class="bx bx-exit"></i>
+	</button>
 </template>
 
 <style scoped>
@@ -109,5 +119,19 @@
 		background-color: rgba(0, 0, 0, 0.05);
 		text-align: center;
 		word-wrap: break-word;
+	}
+
+	.btn-circle {
+		border-radius: 50%;
+		width: 40px;
+		height: 40px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		background-color: #fac29a;
+
+		position: absolute;
+		top: 15px;
+		right: 15px;
 	}
 </style>

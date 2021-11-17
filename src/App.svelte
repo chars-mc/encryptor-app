@@ -31,10 +31,10 @@
 
 		<!-- auth -->
 		<Route path="login">
-			<Login on:userLoggedIn on:userLoggedIn="{handleUser}" />
+			<Login on:userLoggedIn="{handleUser}" />
 		</Route>
 		<Route path="signup">
-			<SignUp />
+			<SignUp on:userLoggedIn="{handleUser}" />
 		</Route>
 	</div>
 </Router>
