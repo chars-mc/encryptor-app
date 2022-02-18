@@ -55,7 +55,7 @@
 		</button>
 
 		<p>
-			Your don't have an account? <Link to="/signup">Signup</Link>
+			Your don't have an account? <Link to="/signup">Sign Up</Link>
 		</p>
 	</form>
 
