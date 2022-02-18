@@ -10,6 +10,12 @@ You can find the backend [here](https://github.com/chars-mc/encryptor-api).
 <img src="./screenshots/02_signup.png" alt="Sign up" width="300"/>
 <img src="./screenshots/03_decrypt_text.png" alt="app" width="300"/>
 
+## Technologies
+
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" style="width: 150px; margin-right: 30px;" />
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original-wordmark.svg" style="width: 150px; margin-right: 30px;"/>
+<img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/svelte/svelte-original-wordmark.svg" style="width: 150px; margin-right: 30px;"/>
+
 ---
 
 ## Get started
